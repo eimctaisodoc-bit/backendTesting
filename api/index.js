@@ -1,8 +1,8 @@
 const express = require("express");
-const serverless = require("serverless-http");
-
 const app = express();
+
 app.use(express.json());
+
 // Your route
 app.get("/", (req, res) => {
   res.send(`
@@ -23,7 +23,5 @@ app.get("/", (req, res) => {
   `);
 });
 
-// ✅ Export for serverless
-module.exports.handler = serverless(app);
-
-
+// ✅ Export the app directly
+module.exports = app;
