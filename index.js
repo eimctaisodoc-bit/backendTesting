@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+const serverLess=require('serverless-http')
 const PORT = 3000;
 
 app.get("/", (req, res) => {
@@ -51,6 +52,7 @@ app.get("/", (req, res) => {
 
 
 // console.log('running....')
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+// });
+module.express=serverLess(app)
