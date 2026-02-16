@@ -12,7 +12,7 @@ app.get("/", async (req, res) => {
   //   return res.status(500).send("Failed to connect to MongoDB");
   // }
   // console.log("Connected to MongoDB");
-  res.send("Hello World!");
+  res.send("Hello This is again !");
 });
 
 // ✅ Export the app directly
