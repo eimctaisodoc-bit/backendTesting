@@ -3,15 +3,15 @@ const connectDB = require("./db");
 const app = express();
 app.use(express.json());
 
+ connectDB();
 // Your route
 app.get("/", async (req, res) => {
-  try {
-    await connectDB();
-  } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
-    return res.status(500).send("Failed to connect to MongoDB");
-  }
-  console.log("Connected to MongoDB");
+  // try {
+  // } catch (error) {
+  //   console.error("Error connecting to MongoDB:", error);
+  //   return res.status(500).send("Failed to connect to MongoDB");
+  // }
+  // console.log("Connected to MongoDB");
   res.send("Hello World!");
 });
 
