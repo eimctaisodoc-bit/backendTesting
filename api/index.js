@@ -1,27 +1,23 @@
 const express = require("express");
+const connectDB = require("./db");
 const app = express();
-
 app.use(express.json());
 
 // Your route
-app.get("/", (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Express App</title>
-      </head>
-      <body>
-        <div class="card">
-          <h1>🚀 Express is Running</h1>
-          <p>Your Node.js + Express server is up and ready.</p>
-        </div>
-      </body>
-    </html>
-  `);
+app.get("/", async (req, res) => {
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+    return res.status(500).send("Failed to connect to MongoDB");
+  }
+  console.log("Connected to MongoDB");
+  res.send("Hello World!");
 });
 
 // ✅ Export the app directly
 module.exports = app;
+// console.log(process.env.MongoURL);
+// app.listen(process.env.PORT || 3000, () => {
+//   console.log("Server is running on port " + (process.env.PORT || 3000));
+// });
